@@ -7,7 +7,7 @@
 		xmlns:basicInfo="clr-namespace:BasicInfirmationProject;assembly=BasicInfirmationProject"
 		xmlns:foolball ="clr-namespace:FootballControls.Views;assembly=FootballControls"
         mc:Ignorable="d"
-        Title="{x:Static basicInfo:BasicInfirmation.FullName}" Height="700" Width="950">
+        Title="{x:Static basicInfo:BasicInformation.FullName}" Height="700" Width="950">
 
     <Grid>
         <Grid.RowDefinitions>

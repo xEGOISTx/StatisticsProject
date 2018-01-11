@@ -210,7 +210,7 @@ namespace FootballControls.ViewModels.Parameters
 			{
 				if(_playerEditor.PresentChangedPlayers)
 				{
-					MessageBoxResult result = MessageBox.Show("Применить изменения?", BasicInfirmation.FullName, MessageBoxButton.YesNoCancel, MessageBoxImage.Information);
+					MessageBoxResult result = MessageBox.Show("Применить изменения?", BasicInformation.FullName, MessageBoxButton.YesNoCancel, MessageBoxImage.Information);
 
 					if(result == MessageBoxResult.Yes)
 					{

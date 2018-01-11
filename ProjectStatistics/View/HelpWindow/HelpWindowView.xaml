@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:ProjectStatistics.View.HelpWindow"
              xmlns:basicInfo ="clr-namespace:BasicInfirmationProject;assembly=BasicInfirmationProject"
              mc:Ignorable="d" 
-             Title="{x:Static basicInfo:BasicInfirmation.FullName}" Height="700" Width="950" MinHeight="250" MinWidth="400">
+             Title="{x:Static basicInfo:BasicInformation.FullName}" Height="700" Width="950" MinHeight="250" MinWidth="400">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition />

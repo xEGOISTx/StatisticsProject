@@ -10,7 +10,7 @@ namespace BasicInfirmationProject
 	/// <summary>
 	/// Содержит информацию о проэкте
 	/// </summary>
-    public static class BasicInfirmation
+    public static class BasicInformation
     {
 		/// <summary>
 		/// Полное имя программы. Возврвщает название ,статус и версию сборки одной строкой
@@ -21,7 +21,7 @@ namespace BasicInfirmationProject
 			{
 				string fullName = "Statistics Project. Alpha";
 
-				return string.Format("{0} v.{1}", fullName, typeof(BasicInfirmation).Assembly.GetName().Version.ToString());
+				return string.Format("{0} v.{1}", fullName, typeof(BasicInformation).Assembly.GetName().Version.ToString());
 			}
 		}
     }

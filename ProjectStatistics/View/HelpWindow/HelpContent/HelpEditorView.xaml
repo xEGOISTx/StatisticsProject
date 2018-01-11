@@ -1,0 +1,41 @@
+﻿<UserControl x:Class="ProjectStatistics.View.HelpWindow.HelpContent.HelpEditorView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ProjectStatistics.View.HelpWindow.HelpContent"
+             mc:Ignorable="d">
+    <Grid>
+        <StackPanel Margin="5">
+            <StackPanel.Resources>
+                <Style TargetType="Image">
+                    <Setter Property="HorizontalAlignment" Value="Left"/>
+                    <Setter Property="Margin" Value="5"/>
+                </Style>
+            </StackPanel.Resources>
+            <TextBlock>
+                <Run Text="Редактор предназначен для изменения данных игрока. Собственно он и занимается анализом и расчётом эффективности."/>
+                <LineBreak/>
+                <Run Text="Перейдите на вкладку редактора и выберете игрока."/>
+            </TextBlock>
+            <Image Source="Img/Editor_1.jpg"/>
+            <TextBlock Text="Далее нажмите кнопку редактировать и вводите данные как на картинке ниже. При желании можно изменить имя и базовую позицию."/>
+            <Image Source="Img/Editor_2.jpg"/>
+            <TextBlock >
+                <Run Text="Нажмите кнопку завершить редактированние и выберите дальнейшее действие."/>
+                <LineBreak/>
+                <Run Text="Да - завершить редактированние и применить изменения."/>
+                <LineBreak/>
+                <Run Text="Нет - завершить редактированние не применяя изменения."/>
+                <LineBreak/>
+                <Run Text="Отмена - вернуться к редактированнию."/>
+            </TextBlock>
+            <Image Source="Img/AcceptChange.jpg"/>
+            <TextBlock Text="После применения измения осуществится пересчёт и иформация сразу изменится. Что можно заметить наведя 
+курсор на иконку информации об игроке."/>
+            <TextBlock Text="Новые данные суммируются с текущими."/>
+            <Image Source="Img/Editor_3_AndInfo.jpg"/>
+            <TextBlock Text="Неактивные игроки редактируются аналогичным образом."/>
+        </StackPanel>
+    </Grid>
+</UserControl>

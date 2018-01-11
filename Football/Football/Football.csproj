@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BD1D2403-FAD6-482F-B7FF-11D318C86071}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Football</RootNamespace>
+    <AssemblyName>Football</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\Version.cs">
+      <Link>Version.cs</Link>
+    </Compile>
+    <Compile Include="Chart\ChartsDataLoader.cs" />
+    <Compile Include="Chart\DataPlayerForChart.cs" />
+    <Compile Include="Chart\EfficiencyChart.cs" />
+    <Compile Include="Player\PlayerEditor.cs" />
+    <Compile Include="Field\LocCellToField.cs" />
+    <Compile Include="Field\LocCellToFieldList.cs" />
+    <Compile Include="Field\FootballField.cs" />
+    <Compile Include="Field\LocInCell.cs" />
+    <Compile Include="Field\LocInCellList.cs" />
+    <Compile Include="FootballPalyerLoader.cs" />
+    <Compile Include="Player\FootballPlayer.cs" />
+    <Compile Include="Player\FootballPlayerCalculator.cs" />
+    <Compile Include="FootballPlayerList.cs" />
+    <Compile Include="FootballPlayersListEditor.cs" />
+    <Compile Include="Field\LocationPosition.cs" />
+    <Compile Include="Field\Scheme.cs" />
+    <Compile Include="Field\SchemeList.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\BaseObjects\BaseComponents\BaseComponents.csproj">
+      <Project>{2cd95632-9ae1-4b99-b92e-cd71b29c0c20}</Project>
+      <Name>BaseComponents</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\BaseObjects\BaseObjects\BaseObjects.csproj">
+      <Project>{08E25E21-9DEA-4691-AFB3-0B15DB0382DE}</Project>
+      <Name>BaseObjects</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\BaseObjects\IBaseObjects\IBaseObjects.csproj">
+      <Project>{851dc93b-3937-4715-af0b-243f76442f91}</Project>
+      <Name>IBaseObjects</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\BasicInfirmationProject\BasicInfirmationProject.csproj">
+      <Project>{388ba5b5-cd44-4d73-87c5-e3f68f53cb80}</Project>
+      <Name>BasicInfirmationProject</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Messages\Messages\Messages.csproj">
+      <Project>{D0BDF192-7A1F-49EF-8DCC-938F423124EA}</Project>
+      <Name>Messages</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IFootball\IFootball.csproj">
+      <Project>{AC2E1BA5-E4DC-45FE-A53C-EC8763205ED7}</Project>
+      <Name>IFootball</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

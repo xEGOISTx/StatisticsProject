@@ -1,0 +1,57 @@
+﻿<UserControl x:Class="WPFHelper.Controls.GridViewColumnEx"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WPFHelper.Controls"
+             mc:Ignorable="d"
+             >
+    <UserControl.Resources>
+        
+        <Viewbox x:Key="up" Width="10" Height="10">
+            <Path  Fill="Gray">
+                <Path.Data>
+                    <PathGeometry Figures="M 0,10 L 5,0 L 10,10 Z"/>
+                </Path.Data>
+            </Path>
+        </Viewbox>
+
+        <Viewbox x:Key="down" Width="10" Height="10">
+            <Path  Fill="Gray">
+                <Path.Data>
+                    <PathGeometry Figures="M 5,10 L 0,0 L 10,0 Z"/>
+                </Path.Data>
+            </Path>
+        </Viewbox>
+
+        <Style TargetType="ToggleButton" x:Key="toggBStyle">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ToggleButton">
+                        <Grid>
+                            
+                            <TextBlock x:Name="text"  Text="{Binding ElementName=toggButt, Path=Content}" TextAlignment="Center">
+                             <ContentControl x:Name="cont" Content="{StaticResource up}"
+                                             Margin="6,0,0,0" />
+                            </TextBlock>
+
+                        </Grid>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="true">
+                                <Setter TargetName="cont" Property="Content" Value="{StaticResource down}"/>
+                            </Trigger>
+                            <!--<Trigger Property="IsMouseOver" Value="False">
+                                <Setter TargetName="cont" Property="Visibility" Value="Hidden"/>
+                            </Trigger>-->
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <ToggleButton Name="toggButt" Background="Transparent" Style="{StaticResource toggBStyle}" IsHitTestVisible="False"/>
+    </Grid>
+</UserControl>

@@ -1,0 +1,51 @@
+﻿<Window x:Class="ProjectStatistics.View.HelpWindow.HelpWindowView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ProjectStatistics.View.HelpWindow"
+             xmlns:basicInfo ="clr-namespace:BasicInfirmationProject;assembly=BasicInfirmationProject"
+             mc:Ignorable="d" 
+             Title="{x:Static basicInfo:BasicInfirmation.FullName}" Height="700" Width="950" MinHeight="250" MinWidth="400">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+          
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+
+            <WrapPanel Grid.Column="0" Orientation="Vertical" Margin="5" HorizontalAlignment="Left">
+                <WrapPanel.Resources>
+                    <Style TargetType="Button">
+                        <Setter Property="Margin" Value="0,2"/>
+                        <Setter Property="Padding" Value="2"/>
+                    </Style>
+                </WrapPanel.Resources>
+                <Button Content="О программе" Command="{Binding ShowAbout}"/>
+                <Button Content="Добавление игрока" Command="{Binding ShowHelpAddPlayer}"/>
+                <Button Content="Панель игроков" Command="{Binding ShowHelpPlayersPanel}"/>
+                <Button Content="Перемещение игрока" Command="{Binding ShowHelpMovePlayer}"/>
+                <Button Content="Редактор игроков" Command="{Binding ShowHelpEditor}"/>
+                <Button Content="Поле" Command="{Binding ShowHelpField}"/>
+                <Button Content="График" Command="{Binding ShowHelpChart}"/>
+            </WrapPanel>
+
+            <GroupBox Grid.Column="1" Margin="5">
+                <GroupBox.Header>
+                    <HeaderedContentControl Content="{Binding Path= HelpHeader}" FontSize="15"/>
+                </GroupBox.Header>
+                <ScrollViewer  MinWidth="200" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                <ContentControl  Content="{Binding Path=HelpContent}" 
+                                VerticalAlignment="Top">
+
+                </ContentControl>
+            </ScrollViewer>
+            </GroupBox>
+        </Grid>
+    </Grid>
+</Window>

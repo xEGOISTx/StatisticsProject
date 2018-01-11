@@ -1,0 +1,273 @@
+﻿<UserControl x:Class="FootballControls.Views.ParametersEditorView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:FootballControls.Views"
+			 xmlns:conv ="clr-namespace:Converters;assembly=Converters"
+			 xmlns:res ="clr-namespace:FootballControls.Properties"
+             mc:Ignorable="d" 
+             d:DesignHeight="300">
+	<UserControl.Resources>
+		<ControlTemplate x:Key="textBoxSuccessFullyTemplate">
+			<TextBox MaxLength="4" Width="40" Tag="SuccessFully" TextChanged="int_TextChanged">
+				<TextBox.Text>
+					<Binding Path="SuccessFully" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+						<Binding.ValidationRules>
+							<DataErrorValidationRule ValidatesOnTargetUpdated="True"/>
+						</Binding.ValidationRules>
+					</Binding>
+				</TextBox.Text>
+			</TextBox>
+		</ControlTemplate>
+
+		<ControlTemplate x:Key="textBoxFailedTemplate">
+			<TextBox MaxLength="4" Width="40" Tag="Failed" TextChanged="int_TextChanged">
+				<TextBox.Text>
+					<Binding Path="Failed" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+						<Binding.ValidationRules>
+							<DataErrorValidationRule ValidatesOnTargetUpdated="True"/>
+						</Binding.ValidationRules>
+					</Binding>
+				</TextBox.Text>
+			</TextBox>
+		</ControlTemplate>
+
+		<ControlTemplate x:Key="textBoxCountGamesTemplate">
+			<TextBox MaxLength="4" Name="countGames" TextChanged="int_TextChanged">
+				<TextBox.Text>
+					<Binding Path="EditableCountGames" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+						<Binding.ValidationRules>
+							<DataErrorValidationRule ValidatesOnTargetUpdated="True"/>
+						</Binding.ValidationRules>
+					</Binding>
+				</TextBox.Text>
+			</TextBox>
+		</ControlTemplate>
+
+		<ControlTemplate x:Key="textBoxRatingLeftTemplate">
+			<TextBox MaxLength="2" Name="Rating" TextChanged="int_TextChanged">
+				<TextBox.Text>
+					<Binding Path="EditableRatingLeft" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+						<Binding.ValidationRules>
+							<DataErrorValidationRule ValidatesOnTargetUpdated="True"/>
+						</Binding.ValidationRules>
+					</Binding>
+				</TextBox.Text>
+			</TextBox>
+		</ControlTemplate>
+
+		<ControlTemplate x:Key="textBoxRatingRightTemplate">
+			<TextBox MaxLength="2" Name="Rating" TextChanged="int_TextChanged">
+				<TextBox.Text>
+					<Binding Path="EditableRatingRight" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+						<Binding.ValidationRules>
+							<DataErrorValidationRule ValidatesOnTargetUpdated="True"/>
+						</Binding.ValidationRules>
+					</Binding>
+				</TextBox.Text>
+			</TextBox>
+		</ControlTemplate>
+
+		<Style TargetType="TextBlock" x:Key="tBlockStyle">
+			<Setter Property="Margin" Value="0,1,5,0"/>
+			<Setter Property="TextAlignment" Value="Center"/>
+			<Setter Property="MinHeight" Value="18"/>
+		</Style>
+
+		<Style TargetType="{x:Type TextBox}">
+			<Setter Property="IsEnabled" Value="False"/>
+			<Setter Property="Visibility" Value="Collapsed"/>
+			<Style.Triggers>
+				<MultiDataTrigger>
+					<MultiDataTrigger.Conditions>
+						<Condition Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=UserControl},Path=DataContext.IsEditing}" Value="True"/>
+						<Condition Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=UserControl},Path=DataContext.IsPresentPlayer}" Value="True"/>
+					</MultiDataTrigger.Conditions>
+					<Setter Property="IsEnabled" Value="True"/>
+					<Setter Property="Visibility" Value="Visible"/>
+				</MultiDataTrigger>
+			</Style.Triggers>
+		</Style>
+	</UserControl.Resources>
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition/>
+			<RowDefinition Height="auto"/>
+		</Grid.RowDefinitions>
+
+		<Grid Grid.Row="0">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="4*"/>
+				<ColumnDefinition Width="auto"/>
+				<ColumnDefinition Width="6*"/>
+			</Grid.ColumnDefinitions>
+
+			<ScrollViewer Grid.Column="0" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+				<StackPanel  MinWidth="150">
+					<StackPanel.Resources>
+						<Style TargetType="{x:Type Grid}">
+							<Setter Property="Margin" Value="0,0,0,5"/>
+						</Style>
+					</StackPanel.Resources>
+					<GroupBox Header="Рейтинг">
+						<Grid>
+							<Grid.RowDefinitions>
+								<RowDefinition/>
+								<RowDefinition/>
+							</Grid.RowDefinitions>
+
+							<Grid Grid.Row="0">
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width="70"/>
+									<ColumnDefinition Width="auto"/>
+									<ColumnDefinition Width="3*"/>
+									<ColumnDefinition Width="auto"/>
+									<ColumnDefinition Width="3*"/>
+								</Grid.ColumnDefinitions>
+
+								<TextBlock Grid.Column="0" Text="Рейтинг"/>
+
+								<TextBlock Grid.Column="1" Text="{Binding Path=CurrentRating}" Style="{StaticResource tBlockStyle}"/>
+								<TextBox  Grid.Column="2" Template="{StaticResource textBoxRatingLeftTemplate}" />
+								<TextBlock  Grid.Column="3" Text="," Margin="2,0,2,0"/>
+								<TextBox  Grid.Column="4" Template="{StaticResource textBoxRatingRightTemplate}"/>
+
+							</Grid>
+
+							<Grid Grid.Row="1">
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width="70"/>
+									<ColumnDefinition Width="auto"/>
+									<ColumnDefinition Width="3*"/>
+								</Grid.ColumnDefinitions>
+
+								<TextBlock Grid.Column="0" Text="Кол-во игр"/>
+
+								<TextBlock Grid.Column="1" Text="{Binding Path=CurrentCountGames}" Style="{StaticResource tBlockStyle}"/>
+								<TextBox Grid.Column="2" Template="{StaticResource textBoxCountGamesTemplate}"/>
+							</Grid>
+
+						</Grid>
+					</GroupBox>
+
+                    <GroupBox Header="Базовые свойства">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+
+                            <Grid Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="60"/>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" Text="Имя"/>
+                                <TextBlock Grid.Column="1" Text="{Binding Path=CurrentName}" Style="{StaticResource tBlockStyle}"/>
+                                <TextBox Grid.Column="2" Text="{Binding Path=EditableName,UpdateSourceTrigger=PropertyChanged}"
+                                         MaxLength="7"/>
+                            </Grid>
+
+                            <Grid Grid.Row="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="60"/>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" Text="Позиция"/>
+                                <TextBlock Grid.Column="1" Text="{Binding Path=CurrentBasicPosition ,Converter={x:Static conv:IntToFootballPositionName.Instance}}"
+                                           Style="{StaticResource tBlockStyle}"/>
+                                <ComboBox Grid.Column="2" ItemsSource="{Binding Path=Positions}" SelectedItem="{Binding Path=EditableBasicPosition}"
+                                          Margin="0">
+                                    <ComboBox.Style>
+                                        <Style TargetType="ComboBox">
+                                            <Setter Property="IsEnabled" Value="False"/>
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                            <Style.Triggers>
+                                                <MultiDataTrigger>
+                                                    <MultiDataTrigger.Conditions>
+                                                        <Condition Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=UserControl},Path=DataContext.IsEditing}" Value="True"/>
+                                                        <Condition Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=UserControl},Path=DataContext.IsPresentPlayer}" Value="True"/>
+                                                    </MultiDataTrigger.Conditions>
+                                                    <Setter Property="IsEnabled" Value="True"/>
+                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                </MultiDataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </ComboBox.Style>
+
+
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Converter={x:Static conv:IntToFootballPositionName.Instance}}"/>
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
+                            </Grid>
+                                                       
+                        </Grid>
+                    </GroupBox>
+
+				</StackPanel>
+			</ScrollViewer>
+
+
+
+			<GridSplitter Grid.Column="1" VerticalAlignment="Stretch" Width="3" HorizontalAlignment="Center"/>
+
+			<GroupBox Grid.Column="2" Header="Параметры">
+				<ListView ItemsSource="{Binding Path=DualSubParameters}">
+					<ListView.View>
+						<GridView>
+							<GridView.Columns>
+								<GridViewColumn Header="Название" DisplayMemberBinding="{Binding Path=Name}" />
+
+								<GridViewColumn Header="Успешно" Width="85">
+									<GridViewColumn.CellTemplate>
+										<DataTemplate>
+                                            <StackPanel Orientation="Horizontal" IsEnabled="{Binding Path=IsNotBlockedSuccessFully}"
+                                                        Visibility="{Binding Path=IsNotBlockedSuccessFully, Converter={x:Static conv:BoolToVisibilityConverter.Inst}}">
+												<TextBlock Text="{Binding Path=CurrentSuccessfulValue}" Style="{StaticResource tBlockStyle}"/>
+												<TextBox Template="{StaticResource textBoxSuccessFullyTemplate}"/>
+											</StackPanel>
+										</DataTemplate>
+									</GridViewColumn.CellTemplate>
+								</GridViewColumn>
+
+								<GridViewColumn Header="Неуспешно"  Width="85">
+									<GridViewColumn.CellTemplate>
+										<DataTemplate>
+                                            <StackPanel Orientation="Horizontal" IsEnabled="{Binding Path=IsNotBlockedFailed}"
+                                                        Visibility="{Binding Path=IsNotBlockedFailed, Converter={x:Static conv:BoolToVisibilityConverter.Inst}}">
+												<TextBlock Text="{Binding Path=CurrentFailedValue}" Style="{StaticResource tBlockStyle}"/>
+												<TextBox Template="{StaticResource textBoxFailedTemplate}"/>
+											</StackPanel>
+										</DataTemplate>
+									</GridViewColumn.CellTemplate>
+								</GridViewColumn>
+
+							</GridView.Columns>
+						</GridView>
+					</ListView.View>
+				</ListView>
+			</GroupBox>
+		</Grid>
+
+		<Button Grid.Row="1" Command="{Binding TurnOffEnableEdit}">
+			<Button.Style>
+				<Style TargetType="Button">
+					<Setter Property="Content" Value="{x:Static res:Resources.EditText}"/>
+					<Style.Triggers>
+						<DataTrigger Binding="{Binding Path=IsEditing}" Value="True">
+							<Setter Property="Content" Value="{x:Static res:Resources.EndEditText}"/>
+						</DataTrigger>
+					</Style.Triggers>
+				</Style>
+			</Button.Style>
+		</Button>
+	</Grid>
+</UserControl>

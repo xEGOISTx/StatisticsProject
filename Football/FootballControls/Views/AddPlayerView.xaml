@@ -1,0 +1,42 @@
+﻿<UserControl x:Class="FootballControls.Views.AddPlayerView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:FootballControls.Views"
+			 xmlns:conv ="clr-namespace:Converters;assembly=Converters"
+			 xmlns:res ="clr-namespace:FootballControls.Properties"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+		<GroupBox BorderThickness="1" Header="Добавление нового игрока">
+		<Expander Header="{x:Static res:Resources.AddPlayerText}">
+			<Expander.Resources>
+				<Style TargetType="TextBlock">
+					<Setter Property="HorizontalAlignment" Value="Center"/>
+				</Style>
+				<Style TargetType="TextBox">
+					<Setter Property="Margin" Value="0,0,0,5"/>
+				</Style>
+			</Expander.Resources>
+
+				<StackPanel Margin="2">
+					<TextBlock Text="{x:Static res:Resources.ShortNameText}"/>
+					<TextBox Text="{Binding Path=PlayerName,Mode=TwoWay}" MaxLength="7"/>
+					<TextBlock Text="{x:Static res:Resources.KeyNameText}"/>
+					<TextBox Text="{Binding Path=KeyName,Mode=TwoWay}" MaxLength="20"/>
+					<TextBlock Text="{x:Static res:Resources.PositionText}"/>
+					<ComboBox HorizontalAlignment="Center" Margin="0,5,0,5" Padding="3" Width="65"
+						  ItemsSource="{Binding Path=FootballPositions}" SelectedItem="{Binding Path=BasicPlayPosition}">
+						<ComboBox.ItemTemplate>
+							<DataTemplate>
+								<TextBlock Text="{Binding Converter={x:Static conv:IntToFootballPositionName.Instance},Mode=OneWay}" />
+							</DataTemplate>
+						</ComboBox.ItemTemplate>
+					</ComboBox>
+					<Button Content="{x:Static res:Resources.AddPlayerText}"  Command="{Binding AddPlayer}"/>
+				</StackPanel>
+			</Expander>
+		</GroupBox>
+	</Grid>
+</UserControl>

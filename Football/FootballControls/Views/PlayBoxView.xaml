@@ -1,0 +1,56 @@
+﻿<UserControl x:Class="FootballControls.Views.PlayBoxView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:FootballControls.Views"
+			 xmlns:conv ="clr-namespace:Converters;assembly=Converters"
+             mc:Ignorable="d">
+	<UserControl.Resources>
+		<ControlTemplate x:Key="buttonTemplate" TargetType="Button">
+			<Viewbox>
+				<Canvas Width="50" Height="35" >
+					<Grid>
+						<Path Stroke="Black" Fill="White">
+							<Path.Data>
+								<PathGeometry Figures="M 10,35 V 20 L 5,25 L 0,10 L 10,0 H 40 L 50,10 L 45,25 L 40,20 V 35 Z"/>
+							</Path.Data>
+						</Path>
+
+						<ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center">
+							
+						</ContentPresenter>
+					</Grid>
+				</Canvas>
+			</Viewbox>
+		</ControlTemplate>
+	</UserControl.Resources>
+	
+    <Grid>
+		<StackPanel>
+			<TextBlock Text="{Binding Path=PlayerName}" HorizontalAlignment="Center" Foreground="Yellow"/>
+			<Border BorderThickness="1" BorderBrush="{Binding Path=HighlightPosition}" Padding="3" Width="60">
+				<Button Name="box" Height="35" Width="50" Template="{StaticResource buttonTemplate}" Command="{Binding SelectBox}" 
+						ToolTipService.ShowDuration="60000">
+					<Button.Content>
+						<StackPanel>
+							<TextBlock Text="{Binding Path=PlayerEff}" HorizontalAlignment="Center"/>
+							<TextBlock Text="{Binding Path=Position}" HorizontalAlignment="Center"/>
+						</StackPanel>
+					</Button.Content>
+					<Button.ToolTip>
+						<ToolTip Visibility="{Binding Path=IsPlayerPresent, Converter={x:Static conv:BoolToVisibilityConverter.Inst},Mode=OneWay}"
+								 Background="White" Opacity="0.95" Padding="0" BorderThickness="0.2">
+							<local:ParametersView DataContext="{Binding Path=Player}" />
+						</ToolTip>
+					</Button.ToolTip>
+					<Button.ContextMenu>
+						<ContextMenu>
+							<MenuItem Header="Убрать с поля" IsEnabled="{Binding Path=IsPlayerPresent, Mode=OneWay}" Command="{Binding RemovePlayer}"/>
+						</ContextMenu>
+					</Button.ContextMenu>
+				</Button>
+			</Border>
+		</StackPanel>
+	</Grid>
+</UserControl>

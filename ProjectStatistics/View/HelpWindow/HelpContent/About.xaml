@@ -1,0 +1,22 @@
+﻿<UserControl x:Class="ProjectStatistics.View.HelpWindow.HelpContent.About"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ProjectStatistics.View.HelpWindow.HelpContent"
+             mc:Ignorable="d">
+    <Grid>
+        <TextBlock TextAlignment="Center" TextWrapping="Wrap" >
+            <Run Text="Добро пожаловать в Statistics Project!"  FontSize="15"/>
+            <LineBreak/>
+            <Run Text="Программа предназначена для сбора информации по игрокам и получения аналитических данных."/>
+            <LineBreak/>
+            <Run Text="Таким образом можно определить слабые и сильные стороны игрока."/>
+            <LineBreak/>
+            <LineBreak/>
+            <Run Text="Огромная благобарность за тестированние:"/>
+            <LineBreak/>
+            <Run Text="Симонову Сергею и Сидоренко Сергею."/>
+        </TextBlock>
+    </Grid>
+</UserControl>

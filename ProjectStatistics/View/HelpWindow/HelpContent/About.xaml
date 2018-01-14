@@ -17,6 +17,10 @@
             <Run Text="Огромная благобарность за тестированние:"/>
             <LineBreak/>
             <Run Text="Симонову Сергею и Сидоренко Сергею."/>
+            <LineBreak/>
+            <LineBreak/>
+            <Hyperlink NavigateUri="https://github.com/xEGOISTx/StatisticsProject" 
+                       RequestNavigate="Hyperlink_RequestNavigate">Исходники программы(GitHub)</Hyperlink>
         </TextBlock>
     </Grid>
 </UserControl>

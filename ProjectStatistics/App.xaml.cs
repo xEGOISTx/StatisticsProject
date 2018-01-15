@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace ProjectStatistics
@@ -15,9 +10,19 @@ namespace ProjectStatistics
     {
         public App()
         {
+            RunProgram();
+        }
+
+        private void RunProgram()
+        {
             var mW = new View.MainWindow() { DataContext = new ViewModel.MainWindowViewModel() };
-            mW.Closing += MW_Closing;
+            mW.Closing += MW_Closing;           
             mW.Show();
+        
+            if (!ProjectStatistics.Properties.Settings.Default.LicenseAccepted)
+            {
+                mW.ShowLicenseWindow();
+            }
         }
 
         private void MW_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -26,5 +31,7 @@ namespace ProjectStatistics
             ViewModel.MainWindowViewModel dataContext = mW.DataContext as ViewModel.MainWindowViewModel;
             dataContext.CloseAllWindows();
         }
+
+
     }
 }

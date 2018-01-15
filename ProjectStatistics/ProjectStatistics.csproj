@@ -109,6 +109,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\LicenseWindow\LicenseWindowView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -121,6 +125,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ViewModel\HelpWindow\HelpWindowViewModel.cs" />
+    <Compile Include="ViewModel\LicenseWindow\LicenseWindowViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="View\HelpWindow\HelpContent\About.xaml.cs">
       <DependentUpon>About.xaml</DependentUpon>
@@ -145,6 +150,9 @@
     </Compile>
     <Compile Include="View\HelpWindow\HelpWindowView.xaml.cs">
       <DependentUpon>HelpWindowView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\LicenseWindow\LicenseWindowView.xaml.cs">
+      <DependentUpon>LicenseWindowView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -171,7 +179,7 @@
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
+      <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />

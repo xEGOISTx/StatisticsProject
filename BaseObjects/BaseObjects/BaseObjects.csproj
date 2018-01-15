@@ -43,7 +43,6 @@
     <Compile Include="..\..\Version.cs">
       <Link>Version.cs</Link>
     </Compile>
-    <Compile Include="Base.cs" />
     <Compile Include="BasicPlayer.cs" />
     <Compile Include="ParameterPlayer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

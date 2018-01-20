@@ -26,9 +26,9 @@
                 </TabItem>
 			</TabControl>
 
-			<GridSplitter Grid.Column="1" Width="3" VerticalAlignment="Stretch" HorizontalAlignment="Center"/>
+			<GridSplitter Grid.Column="1" Width="3" VerticalAlignment="Stretch" HorizontalAlignment="Center" Margin="0,22,0,0"/>
 
-			<Grid Grid.Column="2" Margin="5,0,0,0">
+			<Grid Grid.Column="2" Margin="3,0,0,0">
 				<Grid.RowDefinitions>
 					<RowDefinition Height="Auto"/>
 					<RowDefinition />

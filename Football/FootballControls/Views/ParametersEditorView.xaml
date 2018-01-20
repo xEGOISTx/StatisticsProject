@@ -217,7 +217,7 @@
 
 
 
-			<GridSplitter Grid.Column="1" VerticalAlignment="Stretch" Width="3" HorizontalAlignment="Center"/>
+			<GridSplitter Grid.Column="1" VerticalAlignment="Stretch" Width="3" HorizontalAlignment="Center" Margin="0,11,0,0"/>
 
 			<GroupBox Grid.Column="2" Header="Параметры">
 				<ListView ItemsSource="{Binding Path=DualSubParameters}">

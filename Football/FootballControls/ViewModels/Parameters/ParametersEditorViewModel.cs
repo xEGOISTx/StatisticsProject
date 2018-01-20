@@ -168,9 +168,9 @@ namespace FootballControls.ViewModels.Parameters
             get { return (int)_playerEditor.EditableBasicPosition; }
             set
             {
-                if((int)_playerEditor.EditableBasicPosition != value)
+                if ((int)_playerEditor.EditableBasicPosition != value)
                 {
-                    _playerEditor.EditBasicProperties(EditableName, (FootballPosition)value);
+                        _playerEditor.EditBasicProperties(EditableName, (FootballPosition)value);
                     OnPropertyChanged(nameof(EditableBasicPosition));
                 }
             }
@@ -285,7 +285,8 @@ namespace FootballControls.ViewModels.Parameters
         {
             foreach(int pos in Enum.GetValues(typeof(FootballPosition)))
             {
-                _positions.Add(pos);
+                if (pos > 0)
+                    _positions.Add(pos);
             }
         }
 

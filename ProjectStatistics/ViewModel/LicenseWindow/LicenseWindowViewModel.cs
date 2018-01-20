@@ -19,7 +19,7 @@ namespace ProjectStatistics.ViewModel.LicenseWindow
             "СЛУЧАЕ АВТОРЫ ИЛИ ПРАВООБЛАДАТЕЛИ НЕ НЕСУТ ОТВЕТСТВЕННОСТИ ПО КАКИМ-ЛИБО ИСКАМ, ЗА УЩЕРБ " +
             "ИЛИ ПО ИНЫМ ТРЕБОВАНИЯМ, В ТОМ ЧИСЛЕ, ПРИ ДЕЙСТВИИ КОНТРАКТА, ДЕЛИКТЕ ИЛИ ИНОЙ СИТУАЦИИ, " +
             "ВОЗНИКШИМ ИЗ-ЗА ИСПОЛЬЗОВАНИЯ ПРОГРАММНОГО ОБЕСПЕЧЕНИЯ ИЛИ ИНЫХ ДЕЙСТВИЙ С ПРОГРАММНЫМ ОБЕСПЕЧЕНИЕМ.\n\n" +
-            "Сторонее Программное Обеспечение LiveCharts\n" +
+            "Стороннее Программное Обеспечение LiveCharts\n" +
             "The MIT License (MIT)\n" +
             "Copyright(c) 2016 Alberto Rodriguez & LiveCharts contributors\n\n" +
             "   Permission is hereby granted, free of charge, to any person obtaining a copy" +
